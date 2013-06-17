@@ -54,7 +54,7 @@ public class Playlist {
 	 * @param neuerMusiktitel
 	 *            Der Musiktitel, der der Playlist hinzugefŸgt werden soll.
 	 */
-	public void hinzufuegenAmEnde(Musiktitel neuerMusiktitel, String kuenstlername, String liedtitel) {
+	public void hinzufuegenAmEnde(Musiktitel neuerMusiktitel) {
 		
 		if (root != null) {
     		PlaylistElement temp = root;
@@ -64,10 +64,11 @@ public class Playlist {
     		}
     		//Bei next == null wurde das Ende erreicht
     		//und ein neuer Musiktitel wird hinzugefügt
-    		temp.value = new Musiktitel(kuenstlername, liedtitel);
-    	} else {
+    		temp.value = new Musiktitel(neuerMusiktitel);
+    	} 
+		else {
     		//Im Falle von root==null wird addFirst, da in diesem Fall die Liste leer ist
-    		new Musiktitel(kuenstlername, liedtitel);
+    	//	root = new Musiktitel(neuerMusiktitel);
     	}
 	}
 
@@ -77,8 +78,23 @@ public class Playlist {
 	 * @param zuEntfernen
 	 *            Der Musiktitel, der aus der Playlist entfernt werden soll.
 	 */
+	
+	
 	public void entferneMusiktitel(Musiktitel zuEntfernen) {
+		if (root != null) {	// Enthält Liste Objekte
 			
+			PlaylistElement temp = root;	
+			while (temp.next != null) {			// Geht die Liste durch 
+				if (head.equals(zuEntfernen)) { // und sucht nach dem Übergebenen Titel
+					//entferne Objekt			// entfernt übergebenen Titel
+				}
+			temp = temp.next;					// Ist es nicht der Titel nimmt er den nächsten und testet diesen erneut
+			}									// und testet diesen erneut
+		}
+		else {
+			
+		}
+		//	head.remove(zuEntfernen);
 	}
 
 
