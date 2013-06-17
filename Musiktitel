@@ -1,17 +1,24 @@
 package queue.playlist;
 
 
+
 public class Musiktitel {
-  private String kuenstlername, liedtitel;
-	Musiktitel nextMusiktitel = null;
+	private String kuenstlername, liedtitel;
+	Musiktitel neuerMusiktitel = null;
+	
+	
 	/**
 	 * Erstellt einen neuen Musiktitel mit Kuenstelernamen und Liedtitel.
 	 * @param nextMusiktitel 
 	 */
-	public Musiktitel(String kuenstlername, String liedtitel, Musiktitel nextMusiktitel) {
+	public Musiktitel(String kuenstlername, String liedtitel) {
 		this.kuenstlername = kuenstlername;
 		this.liedtitel = liedtitel;
-		this.nextMusiktitel = nextMusiktitel;
+		
+	}
+
+	public Musiktitel(Musiktitel neuerMusiktitel) {
+		this.neuerMusiktitel = neuerMusiktitel;
 	}
 
 	public String getLiedtitel() {
