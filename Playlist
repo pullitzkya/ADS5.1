@@ -1,0 +1,226 @@
+package queue.playlist;
+
+import java.awt.List;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+
+
+public class Playlist {
+  private List Jukebox;
+	private PlaylistElement head;
+	private List liste2;
+	private static PlaylistElement root;
+	private String name;
+	private BufferedReader br;
+
+	/**
+	 * Erstelle Queue basierend auf einer Liste
+	 * 
+	 */
+	public Playlist(PlaylistElement p) {
+		head = p;
+	}
+
+	/**
+	 * Erstelle Queue basierend auf einer Liste
+	 * 
+	 * @param name
+	 *            Der Name der Playlist
+	 */
+	public Playlist(String name) {
+		head = null;
+		this.name = name;//setName
+	}
+
+	/**
+	 * Emulation einer Play-FunktionalitŠt: Erstes Element wird gelšscht
+	 */
+	public void play() {
+		
+		if(root == null){
+		}
+		/*
+    	 * Methode löscht das erste Element der Liste,
+    	 * indem root auf das nächste Element gesetzt wird.
+    	 * Somit hat das "alte root" keine Referenz mehr und der
+    	 * Garbage Collector wird aktiv! :-)
+    	 */
+		else {
+			root = root.next;
+		}
+	}
+	
+
+	/**
+	 * †bergebener Musiktitel wird am Ende der Playlist hinzugefŸgt
+	 * 
+	 * @param neuerMusiktitel
+	 *            Der Musiktitel, der der Playlist hinzugefŸgt werden soll.
+	 */
+	public void hinzufuegenAmEnde(Musiktitel neuerMusiktitel) {
+		
+		if (root != null) {
+    		PlaylistElement temp = root;
+    		//Schleife durchläuft die Employees.
+    		while (temp.next != null) {
+    			temp = temp.next;
+    		}
+    		//Bei next == null wurde das Ende erreicht
+    		//und ein neuer Employee wird hinzugefügt
+    		temp.value = new Musiktitel(null, null, neuerMusiktitel);
+    	} else {
+    		//Im Falle von root==null wird addFirst, da in diesem Fall die Liste leer ist
+    //		root = new Musiktitel();
+    	}
+		
+	}
+
+	/**
+	 * †bergebener Musiktitel wird aus Playlist entfernt.
+	 * 
+	 * @param zuEntfernen
+	 *            Der Musiktitel, der aus der Playlist entfernt werden soll.
+	 */
+	public void entferneMusiktitel(Musiktitel zuEntfernen) {
+			
+	}
+
+
+	/**
+	 * Alle in dieser Playlist enthaltenen Titel als Array zurŸckliefern
+	 * 
+	 * @return Ein Array, das so lang ist, wie die Playlist Titel enthŠlt.
+	 */
+	public String[] getMusiktitel() {
+		int groeße = Playlist.length();
+		String[] musikTitel = new String[groeße];
+		
+		PlaylistElement element = this.head;
+		for(int i = 0; i <= musikTitel.length; i++)
+		{
+		musikTitel[i] = element.value.getLiedtitel();
+		element = element.getNext();
+		}
+	
+		return musikTitel;
+			
+				
+		
+	}
+	
+	/**
+	 * Berechnet die Länge der Liste
+	 * 
+	 * @return length
+	 */
+	public static int length() {
+		int length = 0;
+		PlaylistElement t = root;
+		while (t != null) {
+			t = t.next;
+			length++;
+		};
+		return length;
+	}
+	
+
+	/**
+	 * Alle Inhalte der Playlist lšschen.
+	 */
+	public void leerePlaylist() {
+		//head.removeAll();
+	}
+
+	/**
+	 * †bergebene Datei wird zeilenweise eingelesen. Die Datei muss
+	 * folgenderma§en aufgebaut sein: Titel [Tab] KŸnstler [neue Zeile]
+	 * 
+	 * @param file
+	 * @throws IOException
+	 */
+	public void leseAusDatei(File file) throws IOException {
+		Reader reader = null;
+		try
+		{
+		  reader = new FileReader( "C:\\Users\\andreas\\workspace\\ads_ue5_1_playlist_array_template\\Queue-Playlist.txt" );
+
+		 
+		    System.out.println( reader );
+		}
+		catch ( IOException e ) {
+		  System.err.println( "Fehler beim Lesen der Datei!" );
+		}
+		finally {
+		  try { 
+			  reader.close(); } 
+		  catch ( Exception e ) { 
+			  e.printStackTrace(); }
+		  }
+		
+	}
+
+	/**
+	 * Der Ÿbergebene Musiktitel wird in der Playlist eine Position weiter
+	 * bewegt.
+	 * 
+	 * @param musiktitel
+	 */
+	public void bewegeTitelEinePositionWeiter(Musiktitel musiktitel) {
+
+	}
+
+	/**
+	 * Der Ÿbergebene Musiktitel wird in der Playlist eine Position zurŸck
+	 * bewegt.
+	 * 
+	 * @param musiktitel
+	 */
+	public void bewegeTitelEinePositionZurueck(Musiktitel musiktitel) {
+
+	}
+
+	/**
+	 * Liefert den Namen dieser Playlist
+	 * 
+	 * @return Der Name dieser Playlist
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * VerŠndert den Namen dieser Playlist
+	 * 
+	 * @param name
+	 *            Der neue Name dieser Playlist
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * HŠngt eine andere Playlist an diese Playlist an.
+	 */
+	public void haengePlaylistAn(Playlist anderePlaylist) {
+		if (root != null) {
+    		PlaylistElement temp = root;
+    		/*Schleife durchläuft die Employees,
+			solange bis das letzte Element ereicht ist,
+			dann wird das root Element von Liste2 an das Ende
+			von Liste 1 angehängt. Somit werden beide verkettet
+    		 */
+    		while (temp.next != null) {
+    			temp = temp.next;
+    		}
+//    		temp.next = liste2.root;
+//    	} else {
+//    		// Wenn liste1 leer ist ist erstes Element von liste1
+//    		// gleich erstes Element von liste2
+//    		root = liste2.root;
+//	}
+	}
+	}
+}
