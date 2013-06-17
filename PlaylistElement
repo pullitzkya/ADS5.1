@@ -1,7 +1,7 @@
 package queue.playlist;
 
 public class PlaylistElement {
-  Musiktitel value;
+	Musiktitel value;
 	PlaylistElement next;
 	
 	/**
@@ -15,6 +15,10 @@ public class PlaylistElement {
 
 	public PlaylistElement getNext() {
 		return this.next;
+	}
+	
+	public void setNext(PlaylistElement next) {
+		this.next = next;
 	}
 
 }
