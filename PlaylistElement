@@ -1,0 +1,20 @@
+package queue.playlist;
+
+public class PlaylistElement {
+  Musiktitel value;
+	PlaylistElement next;
+	
+	/**
+	 * @param args
+	 */
+
+	public PlaylistElement(Musiktitel value, PlaylistElement next){
+		this.value = value;
+		this.next = next;
+	}
+
+	public PlaylistElement getNext() {
+		return this.next;
+	}
+
+}
