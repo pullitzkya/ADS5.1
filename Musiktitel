@@ -1,0 +1,36 @@
+package queue.playlist;
+
+
+public class Musiktitel {
+  private String kuenstlername, liedtitel;
+	Musiktitel nextMusiktitel = null;
+	/**
+	 * Erstellt einen neuen Musiktitel mit Kuenstelernamen und Liedtitel.
+	 * @param nextMusiktitel 
+	 */
+	public Musiktitel(String kuenstlername, String liedtitel, Musiktitel nextMusiktitel) {
+		this.kuenstlername = kuenstlername;
+		this.liedtitel = liedtitel;
+		this.nextMusiktitel = nextMusiktitel;
+	}
+
+	public String getLiedtitel() {
+		return liedtitel;
+	}
+
+	public void setLiedtitel(String liedtitel) {
+		this.liedtitel = liedtitel;
+	}
+	public void setKuenstlername(String kuenstlername){
+		this.kuenstlername = kuenstlername;
+	}
+
+	public String getKuenstlername() {
+		return kuenstlername;
+	}
+
+    @Override
+    public String toString() {
+        return kuenstlername + " - " + liedtitel;
+    }        
+}
